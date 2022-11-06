@@ -72,7 +72,7 @@ dishRouter.route('/:dishId')
             .then((resp) => {
                 res.statusCode = 200;
                 res.setHeader('Content-Type', 'application/json');
-                res.json(dish);
+                res.json(resp);
             }, (err) => next(err))
             .catch((err) => next(err));
     });
