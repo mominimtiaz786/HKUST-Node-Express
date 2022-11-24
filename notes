@@ -5,3 +5,9 @@ mongo
 openssl genrsa 1024 > private.key
 openssl req -new -key private.key -out cert.csr
 openssl x509 -req -in cert.csr -signkey private.key -out certificate.pem
+
+Start your server and test your application. 
+
+In a browser, open https://localhost:3443/index.html to open the index.html file. Then click on the Facebook Login button to log into Facebook. At the end of the login process, open your browser's JavaScript console and then obtain the Access Token from there.
+
+Then you can use the access token to contact the server at https://localhost:3443/users/facebook/token and pass in the token using the Authorization header with the value as Bearer <Access Token> to obtain the JWT token from the server.
