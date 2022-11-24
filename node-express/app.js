@@ -11,7 +11,8 @@ var config = require('./config');
 
 const dishRouter = require('./routes/dishRouter'),
   leaderRouter = require('./routes/leaderRouter'),
-  promoRouter = require('./routes/promoRouter');
+  promoRouter = require('./routes/promoRouter'),
+  uploadRouter = require('./routes/uploadRouter');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -47,6 +48,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // app.use(cookieParser('12345-67890-09876-54321'));
 
+app.use(session({ secret:config.secretKey}));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -58,6 +60,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/dishes', dishRouter);
 app.use('/leaders', leaderRouter);
 app.use('/promotions', promoRouter);
+app.use('/imageUpload',uploadRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
